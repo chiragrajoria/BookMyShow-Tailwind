@@ -38,7 +38,7 @@ export const NextArrow = (props) => {
                     height: "32px",
                     width: "40px",
                     right: "-2px",
-                    
+
                     top: "140px",
                     borderRadius: "4px",
                 }}
