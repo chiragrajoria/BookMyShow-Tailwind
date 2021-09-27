@@ -2,6 +2,8 @@ import React from "react";
 import MovieHero from "../components/MovieHero/MovieHero.component";
 import { BiCameraMovie } from "react-icons/bi";
 
+import ProfileSlider from "../components/RoundCarousal/ProfileCarousal.component";
+import TempPosters from "../config/TempPosters.config";
 const Movie = () => {
     return (
         <>
@@ -27,6 +29,27 @@ const Movie = () => {
                         </div>
                     </div>
                 </div>
+                <div className="my-8">
+					<hr />
+				</div>
+
+				<div className="flex flex-col items-start gap-3">
+					<h2 className="text-gray-800 font-bold text-2xl">Cast</h2>
+					<div className="container mx-auto px-4">
+						<ProfileSlider images={TempPosters} title="" isDark={false}/>
+					</div>
+				</div>
+
+				<div className="my-8">
+					<hr />
+				</div>
+
+				<div className="flex flex-col items-start gap-3">
+					<h2 className="text-gray-800 font-bold text-2xl">Crew</h2>
+					<div className="container mx-auto px-4">
+						<ProfileSlider images={TempPosters} title="" isDark={false}/>
+					</div>
+				</div>
             </div>
         </>
     );
