@@ -4,6 +4,25 @@ import { BiCameraMovie } from "react-icons/bi";
 
 import ProfileSlider from "../components/RoundCarousal/ProfileCarousal.component";
 import TempPosters from "../config/TempPosters.config";
+
+
+export const launchRazorPay=()=>{
+    let options={
+        key:"rzp_test_L90RwrAJEOU0Gr",
+        amount:100,
+        currency:"INR",
+        name:"Book My Show Clone",
+        description:"Movie Purchasemon Rental",
+        image:"https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png",
+        handler:()=>{
+            alert("Payment Done")
+        },
+        theme:{color:"#c4242d"}
+    };
+    let rzp=new window.Razorpay(options);
+    rzp.open();
+};
+
 const Movie = () => {
     return (
         <>

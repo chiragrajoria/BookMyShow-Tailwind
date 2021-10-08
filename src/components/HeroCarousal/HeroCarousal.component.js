@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import HeroSlider from "react-slick";
+import axios from "axios";
 
 //component 
-import  { NextArrow, PrevArrow} from "./Arrows.components";
+import { NextArrow, PrevArrow } from "./Arrows.components";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const HeroCarousal = () => {
+
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        const requestNowPlayingMovies = async () => {
+            const getImages = await axios.get("/movie/now_playing");
+            setImages(getImages.data.results);
+            console.log(getImages);
+        };
+        requestNowPlayingMovies();
+    }, []);
+
+
     const settingsLg = {
         arrows: true,
         centerMode: true,
@@ -19,8 +34,8 @@ const HeroCarousal = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        nextArrow:<NextArrow/>,
-        prevArrow:<PrevArrow/>
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />
     }
 
 
@@ -31,17 +46,19 @@ const HeroCarousal = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow:<NextArrow/>,
-        prevArrow:<prevArrow/>
+        nextArrow: <NextArrow />,
+        prevArrow: <prevArrow />
     };
 
-    const images = [
-        "https://in.bmscdn.com/promotions/cms/creatives/1630432985528_incinemasthisfriday_shangchiandthelegendofthetenrings_webshowcase_1240x300.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1630064233552_chalmeraputt2a_webshowcase_1240x300.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1629830049996_celebfiecruisewiththestarsrevised_webshowcase_1240x300_24aug.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1628591224466_fnbgeneric.jpg"
-        //   "https://images.unsplash.com/photo-1630051822408-b80dde2f5681?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-    ]
+
+    //no need as we using api now
+    // const images = [
+    //     "https://in.bmscdn.com/promotions/cms/creatives/1630432985528_incinemasthisfriday_shangchiandthelegendofthetenrings_webshowcase_1240x300.jpg",
+    //     "https://in.bmscdn.com/promotions/cms/creatives/1630064233552_chalmeraputt2a_webshowcase_1240x300.jpg",
+    //     "https://in.bmscdn.com/promotions/cms/creatives/1629830049996_celebfiecruisewiththestarsrevised_webshowcase_1240x300_24aug.jpg",
+    //     "https://in.bmscdn.com/promotions/cms/creatives/1628591224466_fnbgeneric.jpg",
+    //       "https://images.unsplash.com/photo-1630051822408-b80dde2f5681?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+    // ]
 
 
 
@@ -52,7 +69,8 @@ const HeroCarousal = () => {
                     {
                         images.map((image) => (
                             <div className="w-full h-52 md:h-64 py-3">
-                                <img src={image} alt='testing' className="w-full h-full rounded" />
+                                <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                                    alt='testing' className="w-full h-full rounded" />
                             </div>
                         ))
                     }
@@ -64,7 +82,8 @@ const HeroCarousal = () => {
                     {
                         images.map((image) => (
                             <div className="w-full h-72 px-2 py-3">
-                                <img src={image} alt='testing' className="w-full h-full rounded" />
+                                <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                                    alt='testing' className="w-full h-full rounded" />
                             </div>
                         ))
                     }

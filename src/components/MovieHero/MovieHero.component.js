@@ -1,5 +1,6 @@
 import React from "react";
 import { BiShareAlt, BiHeart, BiChevronRight } from "react-icons/bi";
+import { launchRazorPay } from "../../pages/Movie.page";
 
 const MovieHero = () => {
     return (
@@ -57,7 +58,7 @@ const MovieHero = () => {
                     <span className="text-white">2h 12m • Action,Adventure,Fantasy • UA • 3 Sep, 2021</span>
 
 
-                    <button className=" bg-red-600 rounded-lg align-center text-white p-2 w-1/2 ">Book tickets</button>
+                    <button onClick={launchRazorPay} className=" bg-red-600 rounded-lg align-center text-white p-2 w-1/2 ">Book tickets</button>
                 </div>
 
                 <div className="flex bg-opacity-30 bg-black z-30 absolute right-20 top-20 rounded-lg p-2 flex gap-1 ">
